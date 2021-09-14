@@ -1,0 +1,37 @@
+<div class="container border-3 border-dark">
+  <div class="row" style="margin: 20px 0px">
+    <div class="col-3" style="text-align: left">
+      <p class="col-form-label">Enter Name</p>
+    </div>
+    <div class="col-4">
+      <input class="form-control" [(ngModel)]="userName">
+    </div>
+  </div>
+
+  <div class="row form-check" style="margin: 20px 0px">
+    <div class="col-3">
+      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" (change)="currentCompanyToggle($event)">
+      <label class="form-check-label" for="defaultCheck1">
+        Add current company info
+      </label>
+    </div>
+  </div>
+
+  <div class="row" style="margin: 20px 0px" [hidden]="!currentCompanyEnabled">
+    <div class="col-3" style="text-align: left">
+      <p class="col-form-label">Enter Current Company's Name</p>
+    </div>
+    <div class="col-4">
+      <input class="form-control" [(ngModel)]="currentCompany">
+    </div>
+  </div>
+
+  <div class="row" style="margin: 20px 0px" [hidden]="!currentCompanyEnabled">
+    <div class="col-3" style="text-align: left">
+      <p class="col-form-label">Enter Current Position</p>
+    </div>
+    <div class="col-4">
+      <input class="form-control" [(ngModel)]="currentPosition">
+    </div>
+  </div>
+</div>
