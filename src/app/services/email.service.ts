@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {EmailBody} from '../models/email-body';
+import { EmailBody } from '../models/email-body';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmailService {
 
-  private emailBodyList: Array<EmailBody>;
+  private readonly emailBodyList: Array<EmailBody>;
 
   constructor() {
     this.emailBodyList = new Array<EmailBody>();

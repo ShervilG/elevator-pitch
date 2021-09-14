@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {EmailService} from '../services/email.service';
-import {EmailBody} from '../models/email-body';
+import { EmailService } from '../services/email.service';
+import { EmailBody } from '../models/email-body';
 
 @Component({
   selector: 'app-referral-email',
