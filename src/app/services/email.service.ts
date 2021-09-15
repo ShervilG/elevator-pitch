@@ -11,7 +11,7 @@ export class EmailService {
   constructor() {
     this.emailBodyList = new Array<EmailBody>();
     this.emailBodyList.push({
-      salutation: 'Hi {{userName}},',
+      salutation: 'Hi {userName},',
       greeting: 'Hope you are doing great !',
       reason: 'Came across your post.',
       footer: 'Thanks & Regards'
