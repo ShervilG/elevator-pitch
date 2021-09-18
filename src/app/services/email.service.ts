@@ -13,7 +13,7 @@ export class EmailService {
     this.emailBodyList.push({
       salutation: 'Hi {userName},',
       greeting: 'Hope you are doing great !',
-      reason: 'Came across your post.',
+      reason: 'Recently I got to know about job openings in {applyingCompany}. I want to apply for the {applyingPos} role.',
       footer: 'Thanks & Regards'
     });
   }

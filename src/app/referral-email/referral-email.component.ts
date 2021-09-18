@@ -1,6 +1,7 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
 import { EmailService } from '../services/email.service';
 import { EmailBody } from '../models/email-body';
+import {EmailBodyHelperService} from '../services/email-body-helper.service';
 
 @Component({
   selector: 'app-referral-email',
@@ -10,6 +11,8 @@ import { EmailBody } from '../models/email-body';
 export class ReferralEmailComponent implements OnInit, DoCheck {
 
   public userName: string;
+  public applyingCompany: string;
+  public applyingPos: string;
   public currentCompanyEnabled: boolean;
   public currentCompany: string;
   public currentPosition: string;
@@ -17,7 +20,8 @@ export class ReferralEmailComponent implements OnInit, DoCheck {
   public emailBodyString: string;
 
   constructor(
-    private emailService: EmailService
+    private emailService: EmailService,
+    private emailServiceHelper: EmailBodyHelperService
   ) {}
 
   ngDoCheck(): void {
@@ -29,9 +33,10 @@ export class ReferralEmailComponent implements OnInit, DoCheck {
     this.currentCompanyEnabled = false;
     this.currentCompany = '';
     this.currentPosition = '';
+    this.applyingPos = '';
+    this.applyingCompany = '';
     this.emailBody = this.emailService.getRandomEmailBody();
     this.buildEmailBody();
-    console.log(this.emailBodyString);
   }
 
   currentCompanyToggle(event): void {
@@ -44,15 +49,10 @@ export class ReferralEmailComponent implements OnInit, DoCheck {
   }
 
   private buildEmailBody(): void {
-    this.emailBodyString = this.emailBody.salutation.replace('{userName}', this.userName);
-    this.emailBodyString = this.emailBodyString.concat('\n\n');
-    this.emailBodyString = this.emailBodyString.concat(this.emailBody.greeting);
-    if (this.currentCompanyEnabled) {
-      this.emailBodyString = this.emailBodyString.concat(' Im currently working as a ' + this.currentPosition + ' at ' +
-        this.currentCompany + '.');
-    }
-    this.emailBodyString = this.emailBodyString.concat(' ' + this.emailBody.reason + '\n' + '\n');
-    this.emailBodyString = this.emailBodyString.concat(this.emailBody.footer);
+    this.emailBodyString = this.emailServiceHelper.getEmailBody(
+      this.emailBody, this.userName, this.currentCompany, this.currentPosition,
+      this.currentCompanyEnabled, this.applyingPos, this.applyingCompany
+    );
   }
 
   private clearCurrentCompanyDetails(): void {

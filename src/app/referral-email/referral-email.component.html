@@ -8,6 +8,24 @@
     </div>
   </div>
 
+  <div class="row" style="margin: 20px 0px">
+    <div class="col-3" style="text-align: left">
+      <p class="col-form-label">Applying to Company</p>
+    </div>
+    <div class="col-4">
+      <input class="form-control" [(ngModel)]="applyingCompany">
+    </div>
+  </div>
+
+  <div class="row" style="margin: 20px 0px">
+    <div class="col-3" style="text-align: left">
+      <p class="col-form-label">Applying for position</p>
+    </div>
+    <div class="col-4">
+      <input class="form-control" [(ngModel)]="applyingPos">
+    </div>
+  </div>
+
   <div class="row form-check" style="margin: 20px 0px">
     <div class="col-3">
       <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" (change)="currentCompanyToggle($event)">
@@ -35,9 +53,14 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" style="position: relative;width: 60%;background-color: aliceblue">
     <div class="card-text">
-      <textarea [innerHTML]="emailBodyString" style="width: 50%;height: 200px;margin: 20px"></textarea>
+      <textarea [innerHTML]="emailBodyString" style="width: 70%;height: 200px;margin: 20px"></textarea>
+    </div>
+    <div style="position: absolute;left: calc(100% - 50px);margin: 3px">
+      <button type="button" class="btn btn-primary btn-sm" ngxClipboard [cbContent]="emailBodyString">
+        Copy
+      </button>
     </div>
   </div>
 </div>

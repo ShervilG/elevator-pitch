@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ReferralEmailComponent } from './referral-email/referral-email.component';
 import { LinkedinInviteComponent } from './linkedin-invite/linkedin-invite.component';
 import {FormsModule} from '@angular/forms';
+import {ClipboardModule} from 'ngx-clipboard';
 
 const routes: Route[] = [
   { path: '', component: LinkedinInviteComponent },
@@ -20,7 +21,8 @@ const routes: Route[] = [
     imports: [
         BrowserModule,
         RouterModule.forRoot(routes),
-        FormsModule
+        FormsModule,
+        ClipboardModule
     ],
   providers: [],
   bootstrap: [AppComponent]
